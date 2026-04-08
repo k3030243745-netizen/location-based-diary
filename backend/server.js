@@ -1,17 +1,23 @@
+require("dotenv").config({ path: __dirname + "/.env" });
+
 const express = require("express");
 const cors = require("cors");
 const { Pool } = require("pg");
+
+console.log("cwd =", process.cwd());
+console.log("DB_HOST =", process.env.DB_HOST);
+console.log("DB_USER =", process.env.DB_USER);
+console.log("DB_PASSWORD =", process.env.DB_PASSWORD);
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// ===== Database connection configuration=====
 const pool = new Pool({
-  host: "postgresql-cloud-1.macs.hw.ac.uk",
-  port: 5432,
-  database: "datahub",
-  user: "zx2014",
+  host: process.env.DB_HOST,
+  port: Number(process.env.DB_PORT || 5432),
+  database: process.env.DB_NAME,
+  user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   ssl: false
 });
