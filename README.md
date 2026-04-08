@@ -1,4 +1,4 @@
-# Location-Based Diary / Reminder System
+# Location-Based Diary System
 
 ## Overview
 This project implements a location-based reminder system on Android.  
